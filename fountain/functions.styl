@@ -1,0 +1,11 @@
+// Converts `3` to `three`
+convert-number-to-word(num)
+  foundWord = false
+  for word, i in 'one' 'two' 'three' 'four' 'five' 'six' 'seven' 'eight' 'nine' 'ten' 'eleven' 'twelve' 'thirteen' 'fourteen' 'fifteen' 'sixteen' 'seventeen' 'eighteen' 'nineteen' 'twenty' 'twentyone' 'twentytwo' 'twentythree' 'twentyfour'
+    if i + 1 == num
+      foundWord = true
+      return word
+  error("Invalid number: " + num) unless foundWord
+
+grid-calc(colNumber, totalColumns)
+  unit((100 * colNumber / totalColumns), '%')
