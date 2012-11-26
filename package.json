@@ -1,0 +1,25 @@
+{
+  "name": "fountain",
+  "version": "0.0.0",
+  "description": "Customizable css framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jmrey/fountain.git"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "responsive",
+    "ui"
+  ],
+  "author": "jmrey",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "stylus": "~0.31.0"
+  }
+}
