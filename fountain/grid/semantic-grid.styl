@@ -1,0 +1,58 @@
+/////////////////
+// Semantic.gs // for Stylus: http://learnboost.github.com/stylus/
+/////////////////
+
+// Defaults which you can freely override
+$columnWidth = 60px
+$gutterWidth = 20px
+$columns = 12
+
+// Utility variable — you should never need to modify this
+$gridsystemWidth = ($columnWidth + $gutterWidth) * $columns
+
+// Set @$totalWidth to 100% for a fluid layout
+$totalWidth = $gridsystemWidth
+
+// Correcting percentage-to-pixel rounding errors in IE6 & 7
+// See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+// Override @min with the minimum width of your layout
+$minWidth = 960
+$correction = (((0.5 / $minWidth) * 100) * 1%)
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+clearfix()
+ *zoom:1
+  &:before,
+  &:after
+    content:""
+    display:table
+  &:after
+    clear:both
+
+
+//////////
+// GRID //
+//////////
+
+body
+  width 100%
+  clearfix()
+
+row(columns = $columns)
+  display: block
+  width: $totalWidth * (($gutterWidth + $gridsystemWidth ) / $gridsystemWidth)
+  margin: 0 $totalWidth * ((($gutterWidth * 0.5) / $gridsystemWidth ) * - 1)
+  *width: $totalWidth * (($gutterWidth + $gridsystemWidth ) / $gridsystemWidth)-$correction
+  *margin: 0 $totalWidth * ((($gutterWidth * 0.5) / $gridsystemWidth ) * - 1)-$correction
+
+column(x, columns = $columns)
+  display: inline
+  float: left
+  overflow: hidden
+  width: $totalWidth * (((($gutterWidth + $columnWidth ) * x) - $gutterWidth) / $gridsystemWidth)
+  margin: 0 $totalWidth * ( ($gutterWidth * 0.5) / $gridsystemWidth)
+  *width: $totalWidth * (((($gutterWidth + $columnWidth ) * x) - $gutterWidth) / $gridsystemWidth)-$correction
+  *margin: 0 $totalWidth * ( ($gutterWidth * 0.5) / $gridsystemWidth)-$correction
+
+offset(offset = 1)
+  margin-left: $totalWidth*((($gutterWidth+$columnWidth)*offset + ($gutterWidth*0.5))/$gridsystemWidth)
