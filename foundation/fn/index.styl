@@ -1,0 +1,17 @@
+percentage(p)
+  unit(p*100, '%')
+
+convert-number-to-word($num) {
+  count = 1
+  numbers = one two three four five six seven eight nine ten eleven 
+    twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen 
+    twenty twentyone twentytwo twentythree twentyfour
+  for word in numbers
+    if $num == count
+      return word
+    count++
+  return "invalid"
+  
+gridCalc($colNumber, $totalColumns)
+  percentage(($colNumber / $totalColumns))
+
