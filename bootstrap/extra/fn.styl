@@ -1,0 +1,28 @@
+lighten-fixed($color, $percent)
+  $h = hue($color)
+  $s = saturation($color)
+  $l = lightness($color)
+  $l += $percent
+  rgb(hsl($h,$s,$l))
+
+darken-fixed($color, $percent)
+  $h = hue($color)
+  $s = saturation($color)
+  $l = lightness($color)
+  $l -= $percent
+  rgb(hsl($h,$s,$l))
+
+spin($color, $d = 10)
+  h = (hue($color) + $d) % 360
+  s = saturation($color)
+  l = lightness($color)
+  a = alpha($color)
+  h = h < 0 ? 360 + h : h
+  hsla(h, s, l, a)
+
+percentage(p)
+  unit(p*100, '%')
+
+mix($colorA, $colorB, $percent)
+  $w = $percent / 100
+  ($colorA * $w) + ($colorB * $w)
