@@ -70,7 +70,7 @@ square($size)
 
 // Placeholder text
 // -------------------------
-.placeholder($color: $placeholderText)
+placeholder($color = $placeholderText)
   &:-moz-placeholder
     color: $color
   &:-ms-input-placeholder
@@ -154,48 +154,48 @@ formFieldState($textColor = #555, $borderColor = #ccc, $backgroundColor = #f5f5f
 // --------------------------------------------------
 
 // Border Radius
-//.border-radius($radius)
-//  -webkit-border-radius: $radius
-//     -moz-border-radius: $radius
-//          border-radius: $radius
+.border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
 
 // Single Corner Border Radius
-//.border-top-left-radius($radius)
-//  -webkit-border-top-left-radius: $radius
-//      -moz-border-radius-topleft: $radius
-//          border-top-left-radius: $radius
+border-top-left-radius($radius)
+  -webkit-border-top-left-radius: $radius
+  -moz-border-radius-topleft: $radius
+  border-top-left-radius: $radius
 
-//.border-top-right-radius($radius)
-//  -webkit-border-top-right-radius: $radius
-//      -moz-border-radius-topright: $radius
-//          border-top-right-radius: $radius
+border-top-right-radius($radius)
+  -webkit-border-top-right-radius: $radius
+  -moz-border-radius-topright: $radius
+  border-top-right-radius: $radius
 
-//.border-bottom-right-radius($radius)
-//  -webkit-border-bottom-right-radius: $radius
-//      -moz-border-radius-bottomright: $radius
-//          border-bottom-right-radius: $radius
+border-bottom-right-radius($radius)
+  -webkit-border-bottom-right-radius: $radius
+  -moz-border-radius-bottomright: $radius
+  border-bottom-right-radius: $radius
 
-//.border-bottom-left-radius($radius)
-//  -webkit-border-bottom-left-radius: $radius
-//      -moz-border-radius-bottomleft: $radius
-//          border-bottom-left-radius: $radius
+border-bottom-left-radius($radius)
+  -webkit-border-bottom-left-radius: $radius
+  -moz-border-radius-bottomleft: $radius
+  border-bottom-left-radius: $radius
 
-//// Single Side Border Radius
-//.border-top-radius($radius)
-//  .border-top-right-radius($radius)
-//  .border-top-left-radius($radius)
+// Single Side Border Radius
+border-top-radius($radius)
+  border-top-right-radius($radius)
+  border-top-left-radius($radius)
 
-//.border-right-radius($radius)
-//  .border-top-right-radius($radius)
-//  .border-bottom-right-radius($radius)
+border-right-radius($radius)
+  border-top-right-radius($radius)
+  border-bottom-right-radius($radius)
 
-//.border-bottom-radius($radius)
-//  .border-bottom-right-radius($radius)
-//  .border-bottom-left-radius($radius)
+border-bottom-radius($radius)
+  border-bottom-right-radius($radius)
+  border-bottom-left-radius($radius)
 
-//.border-left-radius($radius)
-//  .border-top-left-radius($radius)
-//  .border-bottom-left-radius($radius)
+border-left-radius($radius)
+  border-top-left-radius($radius)
+  border-bottom-left-radius($radius)
 
 // Drop shadows
 //.box-shadow($shadow)
@@ -391,7 +391,7 @@ gradient-radial($innerColor = #555, $outerColor = #333)
 
 gradient-striped($color = #555, $angle = 45deg)
   background-color: $color
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(#fff,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(#fff,.15)), color-stop(.75, rgba(#fff,.15)), color-stop(.75, transparent), to(transparent))
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(#fff,.15)), color-stop(.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(#fff,.15)), color-stop(.75, rgba(#fff,.15)), color-stop(.75, transparent), to(transparent))
   background-image: -webkit-linear-gradient($angle, rgba(#fff,.15) 25%, transparent 25%, transparent 50%, rgba(#fff,.15) 50%, rgba(#fff,.15) 75%, transparent 75%, transparent)
   background-image: -moz-linear-gradient($angle, rgba(#fff,.15) 25%, transparent 25%, transparent 50%, rgba(#fff,.15) 50%, rgba(#fff,.15) 75%, transparent 75%, transparent)
   background-image: -o-linear-gradient($angle, rgba(#fff,.15) 25%, transparent 25%, transparent 50%, rgba(#fff,.15) 50%, rgba(#fff,.15) 75%, transparent 75%, transparent)
@@ -501,24 +501,26 @@ grid-core($gridColumnWidth, $gridGutterWidth)
   spanX($gridColumns)
   offsetX($gridColumns)
 
-grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth)
+grid-fluid(fluidGridColumnWidth, fluidGridGutterWidth)
+  $fluidGridColumnWidth = unit(fluidGridColumnWidth,'px')
+  $fluidGridGutterWidth = unit(fluidGridGutterWidth, 'px')
   span($columns)
-    $columnWidth = ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1))
+    $columnWidth = unit(($fluidGridColumnWidth * $columns) + (($columns - 1) * $fluidGridGutterWidth), '%')
     width: $columnWidth
-    *width: $columnWidth - (.5 / $gridRowWidth * 100 * 1%)
+    *width: $columnWidth - (0.5/$gridRowWidth * 100 * 1%)
   spanX($index)
     for num in 1..$index
       .span{num}
         span(num)
   
   offset($columns)
-    $columnWidth = ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1))
+    $columnWidth = unit(($fluidGridColumnWidth * $columns) + (($columns - 1) * $fluidGridGutterWidth), '%')
     margin-left: $columnWidth + ($fluidGridGutterWidth*2)
-    *margin-left: $columnWidth - (.5 / $gridRowWidth * 100 * 1%) + ($fluidGridGutterWidth*2) - (.5 / $gridRowWidth * 100 * 1%)
+    *margin-left: $columnWidth - (0.5/$gridRowWidth * 100 * 1%) + ($fluidGridGutterWidth*2) - (0.5 / $gridRowWidth * 100 * 1%)
   offsetFirstChild($columns)
-    $columnWidth = ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1))
+    $columnWidth = unit(($fluidGridColumnWidth * $columns) + (($columns - 1) * $fluidGridGutterWidth), '%')
     margin-left: $columnWidth + ($fluidGridGutterWidth)
-    *margin-left: $columnWidth - (.5 / $gridRowWidth * 100 * 1%) + $fluidGridGutterWidth - (.5 / $gridRowWidth * 100 * 1%)
+    *margin-left: $columnWidth - (0.5/$gridRowWidth * 100 * 1%) + $fluidGridGutterWidth - (0.5 / $gridRowWidth * 100 * 1%)
   offsetX($index)
     for num in 1..$index
       .offset{num}
@@ -531,13 +533,13 @@ grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth)
     [class*="span"]
       input-block-level()
       float: left
-      margin-left: $fluidGridGutterWidth
-      *margin-left: $fluidGridGutterWidth - (.5 / $gridRowWidth * 100 * 1%)
+      margin-left: unit($fluidGridGutterWidth,'%')
+      *margin-left: unit($fluidGridGutterWidth - (0.5/$gridRowWidth * 100 * 1%), '%')
     [class*="span"]:first-child
       margin-left: 0
     // Space grid-sized controls properly if multiple per line
     .controls-row [class*="span"] + [class*="span"]
-      margin-left: $fluidGridGutterWidth
+      margin-left: unit($fluidGridGutterWidth,'%')
     // generate .spanX and .offsetX
     spanX($gridColumns)
     offsetX($gridColumns)
