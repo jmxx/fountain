@@ -9,3 +9,11 @@ convert-number-to-word(num)
 
 grid-calc(colNumber, totalColumns)
   unit((100 * colNumber / totalColumns), '%')
+  
+border-box()
+  if $borderBox is defined
+    $borderBox = true
+  else
+    article, div, fieldset, form, section
+      box-sizing: border-box
+  
