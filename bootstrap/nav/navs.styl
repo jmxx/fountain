@@ -48,7 +48,7 @@
     text-shadow: 0 1px 0 rgba(#fff,.5)
   > li > a
     padding: 3px 15px
-  > .active > a,
+  > .active > a
     &, &:hover
       color: $white
       text-shadow: 0 -1px 0 rgba(#000,.2)
@@ -65,7 +65,7 @@
 // Common styles
 .nav-tabs, .nav-pills
   clearfix()
-  > li,
+  > li
     float: left
     > a
       padding-right: 12px
@@ -92,7 +92,7 @@
       &:hover
         border-color: $grayLighter $grayLighter #ddd
   // Active state, and it's :hover to override normal :hover
-  > .active > a,
+  > .active > a
     &, &:hover
       color: $gray
       background-color: $bodyBackground
@@ -112,7 +112,7 @@
     margin-bottom: 2px
     border-radius: 5px
   // Active state
-  > .active > a,
+  > .active > a
     &, &:hover
       color: $white
       background-color: $linkColor
@@ -192,8 +192,8 @@
 
 // Open dropdowns
 // -------------------------
-.nav-tabs .open .dropdown-toggle,
-.nav-pills .open .dropdown-toggle,
+.nav-tabs .open .dropdown-toggle
+.nav-pills .open .dropdown-toggle
 .nav > li.dropdown.open.active > a:hover
   color: $white
   background-color: $grayLight
@@ -228,7 +228,7 @@
     border-bottom: 0
 
 // Show/hide tabbable areas
-.tab-content > .tab-pane,
+.tab-content > .tab-pane
 .pill-content > .pill-pane
   display: none
 
@@ -290,7 +290,7 @@
     border-radius: 0 4px 4px 0
     &:hover
       border-color: $grayLighter $grayLighter $grayLighter #ddd
-  .active > a,
+  .active > a
     &, &:hover
       border-color: #ddd #ddd #ddd transparent
       *border-left-color: $white
